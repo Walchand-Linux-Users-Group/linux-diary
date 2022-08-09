@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&family=Overpass&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+
+body {
+    margin: 0;
+    display: flex;
+    background-image: url('circle.svg');
+    background-repeat: no-repeat;
+    background-size: 100vw;
+}
+
+.wrapper {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapper .container .heading {
+    padding-top: 2rem;
+    margin-bottom: 1rem ;
+    width: 96vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.wrapper .container .heading .logo {
+    width: 6rem;
+    margin: 0 1.5rem;
+}
+
+.wrapper .container .heading .title {
+    color: white;
+    font-size: 2.8vw;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.8vw;
+}
+
+.wrapper .container .description {
+    max-width: 600px;
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    font-family: 'Montserrat';
+}
+
+.wrapper .container .heading-main {
+    margin-top: 1rem;
+    color: #0077B6;
+    font-size: 4.5vw;
+    font-weight: bold;
+    font-family: 'Rubik', sans-serif;
+}
+
+.wrapper .container .btn-register {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    font-family: 'Rubik', sans-serif;
+    color: white;
+    background-color: #03045E;
+    border: 3px solid  #03045E;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+.wrapper .container .btn-register:hover{
+    background-color: white;
+    color:  #03045E;
+    border: 3px solid #03045E;
+}
+
+.wrapper .container .btn-register .btn-icon {
+    font-size: 0.8rem;
+    margin-left: 0.8rem;
+}
+
+.wrapper .container .video-wrapper {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper .container video {
+    width: 100%;
+    max-width: 860px;
+    border-radius: 1rem;
+}
+
+
+#prize_head{
+    text-align: center;
+    font-family: 'Rubik';
+    color: #0077B6;
+    font-size: 90px;
+    font-weight: lighter;
+}
+
+#prize_description{
+    text-align: center;
+    font-family: 'Varela Round';
+    font-size: 40px;
+    color: #03045E;
+    font-weight: regular;
+}
+
+#prize-2,
+#prize-3{
+    padding: 30px;
+}
+
+#session_head{
+    text-align: center;
+    font-family: 'Rubik';
+    color: #0077B6;
+    font-size: 90px;
+    font-weight: lighter;
+}
+
+#left-body_session-1,
+#left-body_session-3{
+    border-bottom: solid 6px #00B4D8;
+    border-left: solid 6px #00B4D8;
+    border-top-left-radius: 50%;
+    padding: 50px;
+    border-bottom-left-radius: 50%;
+}
+
+#right-body_session-1,
+#right-body_session-3
+{
+    border-bottom: solid 6px #00B4D8;
+}
+
+#session-name-1,
+#session-name-3{
+    color: #00B4D8;
+    font-size: 57px;
+    font-family:'Montserrat';
+    font-weight: bolder;
+    text-align: center;
+}
+
+#session-info-1,
+#session-info-3
+{
+    color: #03045E;
+    padding-left: 100px;
+    font-size: 40px;
+}
+
+#session-number-1,
+#session-number-3{
+    margin-right: 200px;
+    font-size: 40px;
+    font-family: 'Varela Round';
+    float: right;
+    padding: 5px 25px;
+    background-color: #0077B6;
+    color: white;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    margin-bottom: -2px;
+}
+
+#left-body_session-2,
+#left-body_session-4
+{
+    border-bottom: solid 6px #00B4D8;
+}
+
+#right-body_session-2,
+#right-body_session-4
+{
+    border-bottom: solid 6px #00B4D8;
+    border-right: solid 6px #00B4D8;
+    border-top-right-radius: 50%;
+    padding: 50px;
+    border-bottom-right-radius: 50%;
+}
+
+#session-name-2,
+#session-name-4
+{
+    color: #00B4D8;
+    font-size: 57px;
+    font-family:'Montserrat';
+    font-weight: bolder;
+    text-align: center;
+}
+
+#session-info-2,
+#session-info-4
+{
+    color: #03045E;
+    padding-left: 100px;
+    font-size: 40px;
+}
+
+#session-number-2,
+#session-number-4
+{
+    margin-left: 200px;
+    font-size: 40px;
+    font-family: 'Varela Round';
+    float: left;
+    padding: 5px 25px;
+    background-color: #0077B6;
+    color: white;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    margin-bottom: -2px;
+}
+
+.form{
+    background-color: #00B4D8;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.form h1{
+    text-align: center;
+    color: white;
+    font-size: 60px;
+    font-family:'Montserrat';
+    font-weight: bolder;
+}
+
+#inputFirstName,
+#inputLastName,
+#inputEmail,
+#inputPhoneNumber,
+#inputCollegeName{
+    color: #03045E;
+}
+
+@media (min-width: 769px) and (max-width: 1200px){
+    #prize_head{
+        padding-top: 20px;
+        font-size: 60px;
+    }
+    #prize_description{
+        font-size: 30px;
+    }
+    #session_head{
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 850px) {
+    body {
+        background-image: none;
+    }
+    .wrapper .container .heading {
+        padding: 1rem;
+        color: black;
+        background-color:  #55D3EF;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+       
+    }
+    .wrapper .container .description {
+        color: black;
+    }
+}
+
+@media (max-width: 575px) {
+
+    .wrapper .container .heading .title {
+        font-size: 5vw;
+        line-height: 1.5;
+    }
+
+    .wrapper .container .description {
+        padding: 0 2rem;
+        font-size: 17px;
+    }
+
+    .wrapper .container .heading-main {
+        font-size: 12vw;
+    }
+    #prize_head{
+        padding-top: 20px;
+        font-size: 55px;
+    }
+    #prize_description{
+        font-size: 20px;
+    }
+    #session_head{
+        font-size: 55px;
+    }
+    #session-name-1,
+    #session-name-3{
+        padding-top: 10px;
+        font-size: 35px;
+    }
+    #session-info-1,
+    #session-info-3{
+        font-size: 25px;
+    }
+    #session-name-2,
+    #session-name-4{
+        padding-top: 10px;
+        font-size: 35px;
+    }
+    #session-info-2,
+    #session-info-4{
+        font-size: 25px;
+    }
+    #left-body_session-1,
+    #left-body_session-3{
+        display: none;
+    }
+    #right-body_session-2,
+    #right-body_session-4{
+        display: none;
+    }
+    #session-number-1,
+    #session-number-3{
+        font-size: 20px;
+    }   
+    #session-number-2,
+    #session-number-4{
+        font-size: 20px;
+    }  
+    .form h1{
+        font-size: 40px;
+    }
+}
