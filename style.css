@@ -47,7 +47,7 @@ body {
 }
 
 .wrapper .container .description {
-    max-width: 600px;
+    max-width: 900px;
     font-size: 24px;
     text-align: center;
     color: white;
@@ -57,7 +57,7 @@ body {
 .wrapper .container .heading-main {
     margin-top: 1rem;
     color: #0077B6;
-    font-size: 4.5vw;
+    font-size: 5vw;
     font-weight: bold;
     font-family: 'Rubik', sans-serif;
 }
@@ -102,7 +102,7 @@ body {
     text-align: center;
     font-family: 'Rubik';
     color: #0077B6;
-    font-size: 90px;
+    font-size: 70px;
     font-weight: lighter;
 }
 
@@ -119,11 +119,22 @@ body {
     padding: 30px;
 }
 
+#prize_title{
+    color: #03045E;
+    text-align: center;
+}
+
+#prize_text{
+    font-size: 20px;
+    color: #03045E;
+    text-align: center;
+}
+
 #session_head{
     text-align: center;
     font-family: 'Rubik';
     color: #0077B6;
-    font-size: 90px;
+    font-size: 70px;
     font-weight: lighter;
 }
 
@@ -142,10 +153,18 @@ body {
     border-bottom: solid 6px #00B4D8;
 }
 
+#session_all-1,
+#session_all-3,
+#session_all-2,
+#session_all-4{
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
 #session-name-1,
 #session-name-3{
     color: #00B4D8;
-    font-size: 50px;
+    font-size: 40px;
     font-family:'Montserrat';
     font-weight: bolder;
     text-align: center;
@@ -154,15 +173,14 @@ body {
 #session-info-1,
 #session-info-3
 {
-    
     color: #03045E;
-    font-size: 40px;
+    font-size: 25px;
 }
 
 #session-number-1,
 #session-number-3{
-    margin-right: 200px;
-    font-size: 40px;
+    margin-right: 180px;
+    font-size: 30px;
     font-family: 'Varela Round';
     float: right;
     padding: 5px 25px;
@@ -180,7 +198,10 @@ body {
 }
 
 #telegram_img,
-#eye_img{ 
+#eye_img,
+#reload_img,
+#thunderbolt_img{ 
+    width: 220px;
     padding: 15px;
 }
 
@@ -198,7 +219,7 @@ body {
 #session-name-4
 {
     color: #00B4D8;
-    font-size: 50px;
+    font-size: 40px;
     font-family:'Montserrat';
     font-weight: bolder;
     text-align: center;
@@ -208,15 +229,15 @@ body {
 #session-info-4
 {
     color: #03045E;
-    padding-left: 100px;
-    font-size: 40px;
+    padding-left: 20px;
+    font-size: 25px;
 }
 
 #session-number-2,
 #session-number-4
 {
-    margin-left: 200px;
-    font-size: 40px;
+    margin-left: 180px;
+    font-size: 30px;
     font-family: 'Varela Round';
     float: left;
     padding: 5px 25px;
@@ -227,14 +248,20 @@ body {
     margin-bottom: -2px;
 }
 
+.box{
+    box-sizing: border-box;
+    border: 6px solid transparent;
+    background-clip:padding-box;
+}
+
 #left-side_form{
     border-radius: 30px;
-    padding: 30px;
+    padding: 40px;
     background-color: #03045E;
 }
 
 .form p{
-    font-size: 32px;
+    font-size: 30px;
     font-family:'Montserrat';
     color: #CAF0F8;
 }
@@ -258,6 +285,66 @@ body {
     font-size: 20px;
     font-weight: bolder;
     color: #03045E;
+}
+
+#right-side_form{
+    border-radius: 30px;
+    padding: 40px;
+    background-color: #03045E;
+}
+
+#right-side_form-head{
+    text-align: center;
+    font-weight: bolder;
+}
+
+#container-1,
+#container-2{
+    padding-top: 30px;
+    display: flex;
+}
+
+#discord_text{
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#blogs_text{
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+#discord{
+    font-size: 80px;
+    color: white;
+}
+
+#blogs{
+    padding-top: 20px;
+    margin-left:10px ;
+    font-size: 85px;
+    color: white;
+}
+
+#discord_link,
+#blogs_link{
+    text-decoration: none;
+}
+
+#discord_text:hover{
+    color:#00B4D8;
+}
+
+#blogs_text:hover{
+    color: #00B4D8;
 }
 
 #footer{
@@ -308,7 +395,33 @@ body {
     padding: 80px;
 }
 
+#home:hover{
+    color: #00B4D8;
+}
 
+#about_us:hover{
+    color: #00B4D8;
+}
+
+#contact:hover{
+    color: #00B4D8;
+}
+
+#linkedin:hover{
+    color: #00B4D8;
+}
+
+#instagram:hover{
+    color: #00B4D8;
+}
+
+#github:hover{
+    color: #00B4D8;
+}
+
+#twitter:hover{
+    color: #00B4D8;
+}
 
 @media (min-width: 769px) and (max-width: 1200px){
     #prize_head{
@@ -340,6 +453,10 @@ body {
     #about_us,
     #contact{
         padding: 15px;
+    }
+    #discord_text,
+    #blogs_text{
+        display: none;
     }
 }
 
@@ -385,6 +502,10 @@ body {
     .wrapper .container .heading .title {
         font-size: 5vw;
         line-height: 1.5;
+    }
+
+    .wrapper .container .heading .logo{
+        width: 5rem;
     }
 
     .wrapper .container .description {
@@ -433,17 +554,37 @@ body {
     }
     #session-number-1,
     #session-number-3{
+        width: 150px;
         font-size: 20px;
     }   
     #session-number-2,
     #session-number-4{
+        width: 150px;
         font-size: 20px;
     }  
+    #session_all-1,
+    #session_all-3,
+    #session_all-2,
+    #session_all-4{
+        margin-left: -3%;
+        margin-right: -3%;
+    }
     .form h1{
         font-size: 40px;
     }
     .form p{
         font-size: 22px;
+    }
+    #discord{
+        font-size: 60px;
+    }
+    #blogs{
+        margin-left: 30px;
+        font-size: 65px;
+    }
+    #discord_text,
+    #blogs_text{
+        font-size: 20px;
     }
     #footer p{
         font-size: 20px;
