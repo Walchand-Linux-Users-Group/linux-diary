@@ -26,27 +26,35 @@ body {
 .wrapper .container .heading {
     padding-top: 2rem;
     margin-bottom: 1rem ;
-    width: 96vw;
+    width: 92vw;
     display: flex;
+    /* justify-content: center; */
+    /* justify-content:space-around; */
     align-items: center;
-    justify-content: space-around;
 }
 
 .wrapper .container .heading .logo {
-    width: 7rem;
+    width: 11rem;
     margin: 0 1.5rem;
 }
 
 .wrapper .container .heading .title {
     color: white;
-    font-size: 3.8vw;
-    padding: 10px;
+    font-size: 4vw;
+    padding: 30px;
     font-weight: bolder;
+    justify-content: center;
     font-family: 'Montserrat';
-    letter-spacing: 0.8vw;
+    
+}
+
+#main-title{
+    margin-left: 35px;
 }
 
 .wrapper .container .description {
+    /* padding: 70px; */
+    margin: 20px;
     max-width: 900px;
     font-size: 24px;
     text-align: center;
@@ -186,8 +194,8 @@ body {
     padding: 5px 25px;
     background-color: #0077B6;
     color: white;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
     margin-bottom: -2px;
 }
 
@@ -243,8 +251,8 @@ body {
     padding: 5px 25px;
     background-color: #0077B6;
     color: white;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
     margin-bottom: -2px;
 }
 
@@ -353,6 +361,10 @@ body {
     border-radius: 30px;
 }
 
+#footer_logo{
+    width: 150px;
+}
+
 #footer p{
     display: flex;
     float: left;
@@ -370,12 +382,17 @@ body {
     color: white;
 }
 
+#footer_left-content ul{
+    margin: 0px;
+    padding: 0px;
+}
 
 #linkedin,
 #instagram,
 #github,
 #twitter{
     color: white;
+    padding-right: 5px;
 }
 
 #footer_right-content{
@@ -458,6 +475,9 @@ body {
     #blogs_text{
         display: none;
     }
+    #main-title{
+        margin-left: 0px;
+    }
 }
 
 @media (max-width: 850px) {
@@ -474,6 +494,9 @@ body {
     }
     .wrapper .container .description {
         color: black;
+    }
+    #main-title{
+        margin-left: 0px;
     }
 }
 
@@ -492,8 +515,8 @@ body {
     #thunderbolt_img{
         margin-left: -80%;
     }
-    #footer_right-content li{
-        float: right;
+    #main-title{
+        margin-left: 0px;
     }
 }
 
@@ -505,7 +528,7 @@ body {
     }
 
     .wrapper .container .heading .logo{
-        width: 5rem;
+        width: 6rem;
     }
 
     .wrapper .container .description {
@@ -522,6 +545,14 @@ body {
     }
     #prize_description{
         font-size: 20px;
+    }
+    #prize-1,
+    #prize-2,
+    #prize-3{
+        display: flex;
+    }
+    #prize-1{
+        justify-content: flex-start;
     }
     #session_head{
         font-size: 55px;
@@ -597,5 +628,8 @@ body {
     }
     #footer_right-content li{
         float: right;
+    }
+    #main-title{
+        margin-left: 0px;
     }
 }
