@@ -40,13 +40,13 @@ body {
 
 .wrapper .container .heading .title {
     color: white;
-    font-size: 4vw;
+    font-size: 4.3vw;
     padding: 30px;
     font-weight: bolder;
     justify-content: center;
     font-family: 'Montserrat';
-    
-}
+    letter-spacing: 0.2rem;   
+}logo.png
 
 #main-title{
     margin-left: 35px;
@@ -65,7 +65,7 @@ body {
 .wrapper .container .heading-main {
     margin-top: 1rem;
     color: #0077B6;
-    font-size: 5vw;
+    font-size: 4.5vw;
     font-weight: bold;
     font-family: 'Rubik', sans-serif;
 }
@@ -81,11 +81,14 @@ body {
     border: 3px solid  #03045E;
     border-radius: 0.4rem;
     cursor: pointer;
+    text-align: center;
 }
+
 .wrapper .container .btn-register:hover{
     background-color: white;
     color:  #03045E;
     border: 3px solid #03045E;
+    opacity: 1;
 }
 
 .wrapper .container .btn-register .btn-icon {
@@ -111,15 +114,16 @@ body {
     font-family: 'Rubik';
     color: #0077B6;
     font-size: 70px;
-    font-weight: lighter;
+    font-weight: 500;
 }
 
 #prize_description{
     text-align: center;
     font-family: 'Varela Round';
-    font-size: 40px;
+    font-size: 30px;
     color: #03045E;
     font-weight: regular;
+    padding: 40px;
 }
 
 #prize-2,
@@ -128,8 +132,10 @@ body {
 }
 
 #prize_title{
+    font-size: 30px;
     color: #03045E;
     text-align: center;
+    font-weight: 400;
 }
 
 #prize_text{
@@ -143,7 +149,7 @@ body {
     font-family: 'Rubik';
     color: #0077B6;
     font-size: 70px;
-    font-weight: lighter;
+    font-weight: 500;
 }
 
 #left-body_session-1,
@@ -183,6 +189,7 @@ body {
 {
     color: #03045E;
     font-size: 25px;
+    text-align: center;
 }
 
 #session-number-1,
@@ -239,6 +246,7 @@ body {
     color: #03045E;
     padding-left: 20px;
     font-size: 25px;
+    text-align: center;
 }
 
 #session-number-2,
@@ -318,7 +326,6 @@ body {
     font-size: 25px;
     text-align: center;
     padding: 10px;
-    margin-top: 10px;
 }
 
 #blogs_text{
@@ -606,6 +613,10 @@ body {
     .form p{
         font-size: 22px;
     }
+    #register-button{
+        display: flex;
+        justify-content: center;
+    }
     #discord{
         font-size: 60px;
     }
@@ -616,6 +627,9 @@ body {
     #discord_text,
     #blogs_text{
         font-size: 20px;
+    }
+    #discord_text{
+        margin-top: -2%;
     }
     #footer p{
         font-size: 20px;
