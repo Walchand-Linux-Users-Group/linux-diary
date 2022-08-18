@@ -26,14 +26,15 @@
                       <label class="title">Walchand Linux Users' Group</label>
                     </div>
                 </div>
+                <label class="heading-main">LinuxDiary 3.0</label>
                 <p class="description">
                   We are here with the series of LINUX DIARY 3.0 . To learn about Linux including various Linux commands, files, processes and much more. 
                   <br/>
                   <br/>
                   <b>Join us to explore and experience the world of LINUX!</b>
                 </p>
-            <label class="heading-main">Linux Diary 3.0</label>
-            <button class="btn-register">Register Now <i class="fa fa-play btn-icon"></i></button>
+            <!-- <label class="heading-main">Linux Diary 3.0</label> -->
+            <a href="#registration-form"><button class="btn-register">Register Now <i id="register-icon" class="fa fa-play btn-icon"></i></button></a>
             <div class="video-wrapper">
                 <video controls autoplay>
                     <source src="Linux Diary 3.0.mp4" type="video/mp4">
@@ -162,21 +163,21 @@
           <br/>
           <br/>
           <br/>
-          <div class="form">
+          <div class="form" id="registration-form">
             <h1>Registration form</h1>
             <br/>
             <div class="container">
               <div class="row">
                 <div class="col-xxl-8 col-lg-8 col-md-8 col-sm-12 box" id="left-side_form">
                   <form class="row g-3 needs-validation">
-                    <p>Fill the form to begin your registration and be ready to dive into Linux!</p>
+                    <p id="left-side_form-head">Fill the form to begin your registration and be ready to dive into Linux!</p>
                     <div class="col-md-6">
                       <label for="inputFirstName" class="form-label" id="inputFirstName">Full Name <i class="fa-solid fa-user"></i> :</label>
                       <input type="text" class="form-control" placeholder="Enter your full name" required>
                     </div>
-                    <div class="col-md-6">
-                        <label for="inputUsername" class="form-label" id="inputUsername">Username <i class="fa-solid fa-fire-flame-curved"></i> :</label>
-                        <input type="text" class="form-control" placeholder="Enter your username" required>
+                    <div class="col-md-6" id="referal-code-container">
+                      <label for="inputFirstName" class="form-label" id="inputFirstName">Referral code <i class="fa-solid fa-tag"></i> :</label>
+                      <input type="text" class="form-control" placeholder="Enter referral code" required>                      
                     </div>
                     <div class="col-md-12">
                       <label for="inputEmail" class="form-label" id="inputEmail">Email <i class="fa-solid fa-envelope"></i> :</label>
@@ -186,7 +187,7 @@
                         <label for="inputCollegeName" class="form-label" id="inputCollegeName">College Name <i class="fa-solid fa-building-columns"></i> :</label>
                         <input type="text" class="form-control" placeholder="Enter your college name" required>
                     </div>
-                    <div class="d-grid gap-2 col-3 mx-auto">
+                    <div class="d-grid gap-6 col-3 mx-auto" id="register-button">
                         <br/>
                       <button type="submit" class="btn btn-primary" id="button_text">Register</button>
                     </div>
@@ -198,13 +199,13 @@
                       <div id="container-1">
                         <div className='left-content'><i id="discord" class="fa-brands fa-discord"></i></div>
                         <div className='right-content'>
-                        <a href="#discord" id="discord_link"><p id="discord_text">Join our discord server!</p></a>
+                        <a href="https://discord.gg/DsHGSEwJ8d" id="discord_link" target="_blank"><p id="discord_text">Join our discord server!</p></a>
                         </div>
                       </div>
                       <div id="container-2">
                         <div className='left-content'><i id="blogs" class="fa-solid fa-book"></i></div>
                         <div className='right-content'>
-                        <a href="#blogs" id="blogs_link"><p id="blogs_text">Do read our blogs!</p></a>
+                        <a href="https://www.wcewlug.org/blogs.php" id="blogs_link" target="_blank"><p id="blogs_text">Do read our blogs!</p></a>
                         </div>
                       </div>
                     </div>
@@ -220,18 +221,18 @@
                 <p id="stay_connected">Stay Connected!</p>
                 <div id="links">
                   <ul>
-                    <li><a href="" id="linkedin"><i class="fa-brands fa-linkedin"></i></a></li>
-                    <li><a href="" id="instagram"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="" id="github"><i class="fa-brands fa-github"></i></a></li>
-                    <li><a href="" id="twitter"><i class="fa-brands fa-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/wlug-club/" id="linkedin" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                    <li><a href="https://instagram.com/wcewlug?igshid=YmMyMTA2M2Y=" id="instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://github.com/Walchand-Linux-Users-Group" id="github" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                    <li><a href="https://mobile.twitter.com/wcewlug" id="twitter" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
                   </ul>
                 </div>
               </div>
               <div class="col-xxl-8 col-lg-8 col-md-8 col-sm-12" id="footer_right-content">
                 <ul>
                   <li><a href="#" id="home">Home</a></li>
-                  <li><a href="#about_us" id="about_us">About Us</a></li>
-                  <li><a href="#contact" id="contact">Contact</a></li>
+                  <li><a href="https://www.wcewlug.org/" id="about_us" target="_blank">About Us</a></li>
+                  <li><a href="https://www.wcewlug.org/index.php#contact" id="contact" target="_blank">Contact</a></li>
                 </ul>
               </div>
             </div>
