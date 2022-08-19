@@ -46,7 +46,7 @@ body {
     justify-content: center;
     font-family: 'Montserrat';
     letter-spacing: 0.2rem;   
-}logo.png
+}
 
 #main-title{
     margin-left: 35px;
@@ -110,6 +110,7 @@ body {
 
 
 #prize_head{
+    padding-top: 60px;
     text-align: center;
     font-family: 'Rubik';
     color: #0077B6;
@@ -124,27 +125,26 @@ body {
     color: #03045E;
     font-weight: regular;
     padding: 40px;
+    font-weight: 600;
 }
 
 #prize-2,
 #prize-3{
-    padding: 30px;
+    padding: 60px;
 }
 
 #prize_title{
+    font-weight: 500;
     font-size: 30px;
     color: #03045E;
     text-align: center;
-    font-weight: 400;
-}
-
-#prize_text{
-    font-size: 20px;
-    color: #03045E;
-    text-align: center;
+    padding: 20px;
+    /* margin: 30px; */
 }
 
 #session_head{
+    padding-top: 80px;
+    padding-bottom: 40px;
     text-align: center;
     font-family: 'Rubik';
     color: #0077B6;
@@ -168,11 +168,13 @@ body {
 }
 
 #session_all-1,
-#session_all-3,
 #session_all-2,
+#session_all-3,
 #session_all-4{
     margin-left: 80px;
     margin-right: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #session-name-1,
@@ -187,6 +189,7 @@ body {
 #session-info-1,
 #session-info-3
 {
+    padding: 30px;
     color: #03045E;
     font-size: 25px;
     text-align: center;
@@ -243,8 +246,9 @@ body {
 #session-info-2,
 #session-info-4
 {
+    padding: 30px;
     color: #03045E;
-    padding-left: 20px;
+    /* padding-left: 20px; */
     font-size: 25px;
     text-align: center;
 }
@@ -262,6 +266,10 @@ body {
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     margin-bottom: -2px;
+}
+
+#registration-form{
+    padding-top: 80px;
 }
 
 .box{
@@ -301,6 +309,11 @@ body {
     font-size: 20px;
     font-weight: bolder;
     color: #03045E;
+    background-color: #00B4D8;
+}
+
+#button_text:hover{
+    background-color:#0077B6;
 }
 
 #right-side_form{
@@ -363,13 +376,10 @@ body {
 }
 
 #footer{
+    margin: 30px 0px;
     padding: 40px;
     background-color: #03045E;
     border-radius: 30px;
-}
-
-#footer_logo{
-    width: 150px;
 }
 
 #footer p{
@@ -378,6 +388,11 @@ body {
     font-size: 22px;
     font-family:'Rubik';
     color: white;
+}
+
+#footer #footer_left-content #rights_reserved{
+    font-size: 15px;
+    padding-top: 30px;
 }
 
 #footer li{
@@ -402,11 +417,12 @@ body {
     padding-right: 5px;
 }
 
+
 #footer_right-content{
     padding: 20px;
 }
 
-#footer_right-content a{
+#footer_right-content .top-content a{
     text-decoration: none;
     color: white;
     font-family: 'Rubik';
@@ -419,16 +435,32 @@ body {
     padding: 80px;
 }
 
-#home:hover{
+.top-content #home:hover{
     color: #00B4D8;
 }
 
-#about_us:hover{
+.top-content #about_us:hover{
     color: #00B4D8;
 }
 
-#contact:hover{
+.top-content #contact:hover{
     color: #00B4D8;
+}
+
+#important-links-container{
+    float: right;
+    padding-top: 42px;
+}
+
+#important-links-container .bottom-content a{
+    text-decoration: none;
+}
+
+#privacy_link,
+#terms_and_conditions,
+#refund_policy{
+    color: white;
+    font-size: 15px;
 }
 
 #linkedin:hover{
@@ -449,14 +481,17 @@ body {
 
 @media (min-width: 769px) and (max-width: 1200px){
     #prize_head{
-        padding-top: 20px;
+        padding-top: 40px;
         font-size: 60px;
-    }
-    #prize_description{
-        font-size: 30px;
     }
     #session_head{
         font-size: 60px;
+    }
+    #telegram_img,
+    #eye_img,
+    #reload_img,
+    #thunderbolt_img{
+        display: none;
     }
     #session-name-1,
     #session-name-2,
@@ -508,16 +543,42 @@ body {
 }
 
 @media (max-width:768px) {
+    #telegram_img,
+    #eye_img,
+    #reload_img,
+    #thunderbolt_img{
+        display: none;
+    }
     #session-info-1,
     #session-info-3{
-        font-size: 30px;
-        padding-left:80px ;
+        font-size: 25px;
     }
-    #session-info-2,
+    #session-info-2{
+        font-size: 25px;
+        margin: 10px;   
+    }
     #session-info-4{
-        font-size: 30px;
-        padding-right:80px ;
+        font-size: 25px;
     }
+    /* #session-number-1{
+        font-size: 25px;
+        clear: both;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 0px 45px;
+        margin-left: 65px;
+    }
+    #session-number-2{
+        font-size: 25px;
+        clear: both;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 0px 45px;
+        margin-right: 95px;
+    } */
+
     #reload_img,
     #thunderbolt_img{
         margin-left: -80%;
@@ -535,7 +596,7 @@ body {
     }
 
     .wrapper .container .heading .logo{
-        width: 6rem;
+        width: 5.5rem;
     }
 
     .wrapper .container .description {
@@ -547,11 +608,12 @@ body {
         font-size: 12vw;
     }
     #prize_head{
-        padding-top: 20px;
+        padding: 40px 0px;
         font-size: 55px;
     }
     #prize_description{
         font-size: 20px;
+        padding: 0px;
     }
     #prize-1,
     #prize-2,
