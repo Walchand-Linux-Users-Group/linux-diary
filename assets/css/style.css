@@ -5,7 +5,7 @@
 body {
     margin: 0;
     display: flex;
-    background-image: url('circle.svg');
+    background-image: url('../images/circle.svg');
     background-repeat: no-repeat;
     background-size: 100vw;
 }
