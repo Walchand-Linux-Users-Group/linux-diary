@@ -1,0 +1,711 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&family=Overpass&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+
+body {
+    margin: 0;
+    display: flex;
+    background-image: url('../images/circle.svg');
+    background-repeat: no-repeat;
+    background-size: 100vw;
+}
+
+.wrapper {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapper .container .heading {
+    padding-top: 2rem;
+    margin-bottom: 1rem ;
+    width: 92vw;
+    display: flex;
+    /* justify-content: center; */
+    /* justify-content:space-around; */
+    align-items: center;
+}
+
+.wrapper .container .heading .logo {
+    width: 11rem;
+    margin: 0 1.5rem;
+}
+
+.wrapper .container .heading .title {
+    color: white;
+    font-size: 4.3vw;
+    padding: 30px;
+    font-weight: bolder;
+    justify-content: center;
+    font-family: 'Montserrat';
+    letter-spacing: 0.2rem;   
+}
+
+#main-title{
+    margin-left: 35px;
+}
+
+.wrapper .container .description {
+    /* padding: 70px; */
+    margin: 20px;
+    max-width: 900px;
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    font-family: 'Montserrat';
+}
+
+.wrapper .container .heading-main {
+    margin-top: 1rem;
+    color: #0077B6;
+    font-size: 4.5vw;
+    font-weight: bold;
+    font-family: 'Rubik', sans-serif;
+}
+
+.wrapper .container .btn-register {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    font-family: 'Rubik', sans-serif;
+    color: white;
+    background-color: #03045E;
+    border: 3px solid  #03045E;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.wrapper .container .btn-register:hover{
+    background-color: white;
+    color:  #03045E;
+    border: 3px solid #03045E;
+    opacity: 1;
+}
+
+.wrapper .container .btn-register .btn-icon {
+    font-size: 0.8rem;
+    margin-left: 0.8rem;
+}
+
+.wrapper .container .video-wrapper {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper .container video {
+    width: 100%;
+    max-width: 860px;
+    border-radius: 1rem;
+}
+
+
+#prize_head{
+    padding-top: 60px;
+    text-align: center;
+    font-family: 'Rubik';
+    color: #0077B6;
+    font-size: 70px;
+    font-weight: 500;
+}
+
+#prize_description{
+    text-align: center;
+    font-family: 'Varela Round';
+    font-size: 30px;
+    color: #03045E;
+    font-weight: regular;
+    padding: 40px;
+    font-weight: 600;
+}
+
+#prize-2,
+#prize-3{
+    padding: 60px;
+}
+
+#prize_title{
+    font-weight: 500;
+    font-size: 30px;
+    color: #03045E;
+    text-align: center;
+    padding: 20px;
+    /* margin: 30px; */
+}
+
+#session_head{
+    padding-top: 80px;
+    padding-bottom: 40px;
+    text-align: center;
+    font-family: 'Rubik';
+    color: #0077B6;
+    font-size: 70px;
+    font-weight: 500;
+}
+
+#left-body_session-1,
+#left-body_session-3{
+    border-bottom: solid 6px #00B4D8;
+    border-left: solid 6px #00B4D8;
+    border-top-left-radius: 50%;
+    padding: 50px;
+    border-bottom-left-radius: 50%;
+}
+
+#right-body_session-1,
+#right-body_session-3
+{
+    border-bottom: solid 6px #00B4D8;
+}
+
+#session_all-1,
+#session_all-2,
+#session_all-3,
+#session_all-4{
+    margin-left: 80px;
+    margin-right: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#session-name-1,
+#session-name-3{
+    color: #00B4D8;
+    font-size: 40px;
+    font-family:'Montserrat';
+    font-weight: bolder;
+    text-align: center;
+}
+
+#session-info-1,
+#session-info-3
+{
+    padding: 30px;
+    color: #03045E;
+    font-size: 25px;
+    text-align: center;
+}
+
+#session-number-1,
+#session-number-3{
+    margin-right: 180px;
+    font-size: 30px;
+    font-family: 'Varela Round';
+    float: right;
+    padding: 5px 25px;
+    background-color: #0077B6;
+    color: white;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    margin-bottom: -2px;
+}
+
+#left-body_session-2,
+#left-body_session-4
+{
+    border-bottom: solid 6px #00B4D8;
+}
+
+#telegram_img,
+#eye_img,
+#reload_img,
+#thunderbolt_img{ 
+    width: 220px;
+    padding: 15px;
+}
+
+#right-body_session-2,
+#right-body_session-4
+{
+    border-bottom: solid 6px #00B4D8;
+    border-right: solid 6px #00B4D8;
+    border-top-right-radius: 50%;
+    padding: 50px;
+    border-bottom-right-radius: 50%;
+}
+
+#session-name-2,
+#session-name-4
+{
+    color: #00B4D8;
+    font-size: 40px;
+    font-family:'Montserrat';
+    font-weight: bolder;
+    text-align: center;
+}
+
+#session-info-2,
+#session-info-4
+{
+    padding: 30px;
+    color: #03045E;
+    /* padding-left: 20px; */
+    font-size: 25px;
+    text-align: center;
+}
+
+#session-number-2,
+#session-number-4
+{
+    margin-left: 180px;
+    font-size: 30px;
+    font-family: 'Varela Round';
+    float: left;
+    padding: 5px 25px;
+    background-color: #0077B6;
+    color: white;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    margin-bottom: -2px;
+}
+
+#registration-form{
+    padding-top: 80px;
+}
+
+.box{
+    box-sizing: border-box;
+    border: 6px solid transparent;
+    background-clip:padding-box;
+}
+
+#left-side_form{
+    border-radius: 30px;
+    padding: 40px;
+    background-color: #03045E;
+}
+
+.form p{
+    font-size: 30px;
+    font-family:'Montserrat';
+    color: #CAF0F8;
+}
+
+.form h1{
+    text-align: center;
+    color: #0077B6;
+    font-size: 60px;
+    font-family:'Rubik';
+    font-weight: bolder;
+}
+
+#inputFirstName,
+#inputUsername,
+#inputEmail,
+#inputCollegeName{
+    color: white;
+}
+
+#button_text{
+    font-size: 20px;
+    font-weight: bolder;
+    color: #03045E;
+    background-color: #00B4D8;
+}
+
+#button_text:hover{
+    background-color:#0077B6;
+}
+
+#right-side_form{
+    border-radius: 30px;
+    padding: 40px;
+    background-color: #03045E;
+}
+
+#right-side_form-head{
+    text-align: center;
+    font-weight: bolder;
+}
+
+#container-1,
+#container-2{
+    padding-top: 30px;
+    display: flex;
+}
+
+#discord_text{
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    padding: 10px;
+}
+
+#blogs_text{
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+#discord{
+    font-size: 80px;
+    color: white;
+}
+
+#blogs{
+    padding-top: 20px;
+    margin-left:10px ;
+    font-size: 85px;
+    color: white;
+}
+
+#discord_link,
+#blogs_link{
+    text-decoration: none;
+}
+
+#discord_text:hover{
+    color:#00B4D8;
+}
+
+#blogs_text:hover{
+    color: #00B4D8;
+}
+
+#footer{
+    margin: 30px 0px;
+    padding: 40px;
+    background-color: #03045E;
+    border-radius: 30px;
+}
+
+#footer p{
+    display: flex;
+    float: left;
+    font-size: 22px;
+    font-family:'Rubik';
+    color: white;
+}
+
+#footer #footer_left-content #rights_reserved{
+    font-size: 15px;
+    padding-top: 30px;
+}
+
+#footer li{
+    float: left;
+    font-size: 20px;
+    padding: 5px;
+    display: inline;
+    justify-content: space-between;
+    color: white;
+}
+
+#footer_left-content ul{
+    margin: 0px;
+    padding: 0px;
+}
+
+#linkedin,
+#instagram,
+#github,
+#twitter{
+    color: white;
+    padding-right: 5px;
+}
+
+
+#footer_right-content{
+    padding: 20px;
+}
+
+#footer_right-content .top-content a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Rubik';
+    font-size: 20px;
+}
+
+#home,
+#about_us,
+#contact{
+    padding: 80px;
+}
+
+.top-content #home:hover{
+    color: #00B4D8;
+}
+
+.top-content #about_us:hover{
+    color: #00B4D8;
+}
+
+.top-content #contact:hover{
+    color: #00B4D8;
+}
+
+#important-links-container{
+    float: right;
+    padding-top: 42px;
+}
+
+#important-links-container .bottom-content a{
+    text-decoration: none;
+}
+
+#privacy_link,
+#terms_and_conditions,
+#refund_policy{
+    color: white;
+    font-size: 15px;
+}
+
+#linkedin:hover{
+    color: #00B4D8;
+}
+
+#instagram:hover{
+    color: #00B4D8;
+}
+
+#github:hover{
+    color: #00B4D8;
+}
+
+#twitter:hover{
+    color: #00B4D8;
+}
+
+@media (min-width: 769px) and (max-width: 1200px){
+    #prize_head{
+        padding-top: 40px;
+        font-size: 60px;
+    }
+    #session_head{
+        font-size: 60px;
+    }
+    #telegram_img,
+    #eye_img,
+    #reload_img,
+    #thunderbolt_img{
+        display: none;
+    }
+    #session-name-1,
+    #session-name-2,
+    #session-name-3,
+    #session-name-4{
+        font-size: 40px;
+    }
+    #session-info-1,
+    #session-info-2,
+    #session-info-3,
+    #session-info-4{
+        font-size: 30px;   
+    }
+    #footer p{
+        font-size: 20px;
+    }
+    #home,
+    #about_us,
+    #contact{
+        padding: 15px;
+    }
+    #discord_text,
+    #blogs_text{
+        display: none;
+    }
+    #main-title{
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 850px) {
+    body {
+        background-image: none;
+    }
+    .wrapper .container .heading {
+        padding: 1rem;
+        color: black;
+        background-color:  #55D3EF;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+       
+    }
+    .wrapper .container .description {
+        color: black;
+    }
+    #main-title{
+        margin-left: 0px;
+    }
+}
+
+@media (max-width:768px) {
+    #telegram_img,
+    #eye_img,
+    #reload_img,
+    #thunderbolt_img{
+        display: none;
+    }
+    #session-info-1,
+    #session-info-3{
+        font-size: 25px;
+    }
+    #session-info-2{
+        font-size: 25px;
+        margin: 10px;   
+    }
+    #session-info-4{
+        font-size: 25px;
+    }
+    /* #session-number-1{
+        font-size: 25px;
+        clear: both;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 0px 45px;
+        margin-left: 65px;
+    }
+    #session-number-2{
+        font-size: 25px;
+        clear: both;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 0px 45px;
+        margin-right: 95px;
+    } */
+
+    #reload_img,
+    #thunderbolt_img{
+        margin-left: -80%;
+    }
+    #main-title{
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 575px) {
+
+    .wrapper .container .heading .title {
+        font-size: 5vw;
+        line-height: 1.5;
+    }
+
+    .wrapper .container .heading .logo{
+        width: 5.5rem;
+    }
+
+    .wrapper .container .description {
+        padding: 0 2rem;
+        font-size: 17px;
+    }
+
+    .wrapper .container .heading-main {
+        font-size: 12vw;
+    }
+    #prize_head{
+        padding: 40px 0px;
+        font-size: 55px;
+    }
+    #prize_description{
+        font-size: 20px;
+        padding: 0px;
+    }
+    #prize-1,
+    #prize-2,
+    #prize-3{
+        display: flex;
+    }
+    #prize-1{
+        justify-content: flex-start;
+    }
+    #session_head{
+        font-size: 55px;
+    }
+    #session-name-1,
+    #session-name-3{
+        padding-top: 10px;
+        font-size: 30px;
+    }
+    #session-info-1,
+    #session-info-3{
+        font-size: 20px;
+    }
+    #session-name-2,
+    #session-name-4{
+        padding-top: 10px;
+        font-size: 30px;
+    }
+    #session-info-2,
+    #session-info-4{
+        font-size: 20px;
+    }
+    #left-body_session-1,
+    #left-body_session-3{
+        display: none;
+    }
+    #right-body_session-2,
+    #right-body_session-4{
+        display: none;
+    }
+    #session-number-1,
+    #session-number-3{
+        width: 150px;
+        font-size: 20px;
+    }   
+    #session-number-2,
+    #session-number-4{
+        width: 150px;
+        font-size: 20px;
+    }  
+    #session_all-1,
+    #session_all-3,
+    #session_all-2,
+    #session_all-4{
+        margin-left: -3%;
+        margin-right: -3%;
+    }
+    .form h1{
+        font-size: 40px;
+    }
+    .form p{
+        font-size: 22px;
+    }
+    #register-button{
+        display: flex;
+        justify-content: center;
+    }
+    #discord{
+        font-size: 60px;
+    }
+    #blogs{
+        margin-left: 30px;
+        font-size: 65px;
+    }
+    #discord_text,
+    #blogs_text{
+        font-size: 20px;
+    }
+    #discord_text{
+        margin-top: -2%;
+    }
+    #footer p{
+        font-size: 20px;
+    }
+    #home,
+    #about_us,
+    #contact{
+        font-size: 5px;
+        padding: 30px;
+    }
+    #footer_right-content li{
+        float: right;
+    }
+    #main-title{
+        margin-left: 0px;
+    }
+}
