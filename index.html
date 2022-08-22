@@ -143,9 +143,17 @@
                       <label for="referralCode" class="form-label" id="inputReferralCode">Referral code <i class="fa-solid fa-tag"></i> :</label>
                       <input type="text" class="form-control" placeholder="Enter referral code" required>                      
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                       <label for="inputEmail" class="form-label" id="inputEmail">Email <i class="fa-solid fa-envelope"></i> :</label>
                       <input type="email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    <div class="col-md-3">
+                      <label for="inputUPI" class="form-label" id="inputUPI">UPI transaction ID :</label>
+                      <input type="email" class="form-control" placeholder="Enter UID" required>
+                    </div>
+                    <div class="col-md-3" id="QRcode">
+                      <label for="inputQRcode" class="form-label" id="inputQRcode">Scan for payment <i class="fa-solid fa-qrcode"></i> :</label><br/>
+                      <img class="qr-code" src="./assets/images/QR-code.jpeg">
                     </div>
                     <div class="col-md-12">
                         <label for="inputCollegeName" class="form-label" id="inputCollegeName">College Name <i class="fa-solid fa-building-columns"></i> :</label>
@@ -169,10 +177,11 @@
                       <div id="container-2">
                         <div className='left-content'><i id="blogs" class="fa-solid fa-book"></i></div>
                         <div className='right-content'>
-                        <a href="https://blog.wcewlug.org" id="blogs_link" target="_blank"><p id="blogs_text">Do read our blogs!</p></a>
+                        <a href="https://www.wcewlug.org/blogs.php" id="blogs_link" target="_blank"><p id="blogs_text">Do read our blogs!</p></a>
                         </div>
                       </div>
                     </div>
+                    <p id="event_info">If you want to know more about our events <i class="fa-regular fa-calendar-check"></i><br/> <a href="https://www.wcewlug.org/events.php" target="_blank" id="click_here"><b>Do Click Here!</b></a></p>
                 </div>
               </div>
             </div>
