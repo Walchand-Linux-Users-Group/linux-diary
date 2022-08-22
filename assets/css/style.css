@@ -302,8 +302,16 @@ body {
 #inputUsername,
 #inputEmail,
 #inputCollegeName,
-#inputReferralCode{
+#inputReferralCode,
+#inputUPI,
+#inputQRcode
+{
     color: white;
+}
+
+.qr-code{
+    margin: 0px 20px;
+    width: 120px;
 }
 
 #button_text{
@@ -326,6 +334,27 @@ body {
 #right-side_form-head{
     text-align: center;
     font-weight: bolder;
+}
+
+#right-side_form #event_info{
+    margin-top: 30px;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+}
+
+#right-side_form #event_info a{
+    text-decoration: none;
+    color: white;
+}
+
+#right-side_form #event_info #click_here{
+    font-size: 20px;
+}
+
+#right-side_form #event_info a:hover{
+    color: #00B4D8;
 }
 
 #container-1,
@@ -561,31 +590,15 @@ body {
     #session-info-4{
         font-size: 25px;
     }
-    /* #session-number-1{
-        font-size: 25px;
-        clear: both;
-        display: inline-block;
-        overflow: hidden;
-        white-space: nowrap;
-        padding: 0px 45px;
-        margin-left: 65px;
-    }
-    #session-number-2{
-        font-size: 25px;
-        clear: both;
-        display: inline-block;
-        overflow: hidden;
-        white-space: nowrap;
-        padding: 0px 45px;
-        margin-right: 95px;
-    } */
-
     #reload_img,
     #thunderbolt_img{
         margin-left: -80%;
     }
     #main-title{
         margin-left: 0px;
+    }
+    #QRcode{
+        text-align: center;
     }
 }
 
@@ -676,6 +689,9 @@ body {
     .form p{
         font-size: 22px;
     }
+    #QRcode{
+        text-align: center;
+    }
     #register-button{
         display: flex;
         justify-content: center;
@@ -690,6 +706,12 @@ body {
     #discord_text,
     #blogs_text{
         font-size: 20px;
+    }
+    #right-side_form #event_info{
+        font-size: 15px;
+    }
+    #right-side_form #event_info #click_here{
+        font-size: 18px;
     }
     #discord_text{
         margin-top: -2%;
