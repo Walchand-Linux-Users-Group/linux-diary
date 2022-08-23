@@ -35,7 +35,7 @@ var referral = "";
                             return;
                           }
 
-                          var url2 = "http://localhost:3000/api/payment/findUser"
+                          var url2 = "https://wluglinuxdiary.herokuapp.com/api/payment/findUser"
         var params2 = {
             email: email
         };
@@ -55,7 +55,7 @@ var referral = "";
         xmlHttp2.setRequestHeader("Content-type", "application/json");
         xmlHttp2.send(JSON.stringify(params2));
 
-        var url3 = "http://localhost:3000/api/payment/findUser2"
+        var url3 = "https://wluglinuxdiary.herokuapp.com/api/payment/findUser2"
         var params3 = {
             transaction: transaction
         };
@@ -86,7 +86,7 @@ var referral = "";
     function incrementReferral(e) {
 
       if(referral != undefined && referral != "") {
-          var url2 = "http://localhost:3000/api/payment/incrementReferral"
+          var url2 = "https://wluglinuxdiary.herokuapp.com/api/payment/incrementReferral"
         var params2 = {
             referralCode: referral
         };
@@ -116,7 +116,7 @@ var referral = "";
 
         const transaction = document.getElementById("transactionId").value;
 
-        var url = 'http://localhost:3000/api/payment/register';
+        var url = 'https://wluglinuxdiary.herokuapp.com/api/payment/register';
 
         var params = {
             name: name,
