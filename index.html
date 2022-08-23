@@ -133,23 +133,23 @@
             <div class="container">
               <div class="row">
                 <div class="col-xxl-8 col-lg-8 col-md-8 col-sm-12 box" id="left-side_form">
-                  <form class="row g-3 needs-validation">
+                  <div class="row g-3" id="successBox">
                     <p id="left-side_form-head">Fill the form to begin your registration and be ready to dive into Linux!</p>
                     <div class="col-md-6">
                       <label for="inputFirstName" class="form-label" id="inputFirstName">Full Name <i class="fa-solid fa-user"></i> :</label>
-                      <input type="text" class="form-control" placeholder="Enter your full name" required>
+                      <input type="text" id="firstName" class="form-control" placeholder="Enter your full name" required>
                     </div>
                     <div class="col-md-6" id="referal-code-container">
                       <label for="referralCode" class="form-label" id="inputReferralCode">Referral code <i class="fa-solid fa-tag"></i> :</label>
-                      <input type="text" class="form-control" placeholder="Enter referral code" required>                      
+                      <input type="text" id="referral" class="form-control" placeholder="Enter referral code" required>                      
                     </div>
                     <div class="col-md-6">
                       <label for="inputEmail" class="form-label" id="inputEmail">Email <i class="fa-solid fa-envelope"></i> :</label>
-                      <input type="email" class="form-control" placeholder="Enter your email" required>
+                      <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
                     </div>
                     <div class="col-md-3">
                       <label for="inputUPI" class="form-label" id="inputUPI">UPI transaction ID :</label>
-                      <input type="text" class="form-control" placeholder="Enter UID" required>
+                      <input type="text" id="transactionId" class="form-control" placeholder="Enter UID" required>
                     </div>
                     <div class="col-md-3" id="QRcode">
                       <label for="inputQRcode" class="form-label" id="inputQRcode">Scan for payment <i class="fa-solid fa-qrcode"></i> :</label><br/>
@@ -157,13 +157,13 @@
                     </div>
                     <div class="col-md-12">
                         <label for="inputCollegeName" class="form-label" id="inputCollegeName">College Name <i class="fa-solid fa-building-columns"></i> :</label>
-                        <input type="text" class="form-control" placeholder="Enter your college name" required>
+                        <input type="text" id="collegeName" class="form-control" placeholder="Enter your college name" required>
                     </div>
                     <div class="d-grid gap-6 col-3 mx-auto" id="register-button">
                         <br/>
-                      <button type="submit" class="btn btn-primary" id="button_text">Register</button>
+                      <button class="btn btn-primary" id="button_text">Register</button>
                     </div>
-                  </form>
+                  </div>
                 </div>
                 <div class="col-xxl-4 col-lg-4 col-md-4 col-sm-12 box" id="right-side_form" >
                     <p id="right-side_form-head">Or check out these resources</p>

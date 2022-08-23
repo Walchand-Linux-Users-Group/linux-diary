@@ -2,7 +2,7 @@ const Mongoose = require('mongoose');
 const { Schema } = Mongoose;
 
 const UserSchema = new Schema({
-    fullName: {
+    name: {
         type: String,
         required: true
     },
@@ -14,6 +14,11 @@ const UserSchema = new Schema({
     college: {
         type: String,
         required: true
+    },
+    transaction: {
+        type: String,
+        required: true,
+        unique: true
     },
     referralCode: {
         type: String,
@@ -27,7 +32,7 @@ const UserSchema = new Schema({
     },
     time: {
         type: String,
-        default: new Date().toLocaleDateString()
+        default: new Date().toLocaleString()
     }
 });
 

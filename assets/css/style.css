@@ -5,7 +5,7 @@
 body {
     margin: 0;
     display: flex;
-    background-image: url('../images/circle.svg');
+    background-image: url('./../images/circle.svg');
     background-repeat: no-repeat;
     background-size: 100vw;
 }
@@ -130,7 +130,7 @@ body {
 
 #prize-2,
 #prize-3{
-    padding: 40px;
+    padding: 60px;
 }
 
 #prize_title{
@@ -138,7 +138,7 @@ body {
     font-size: 30px;
     color: #03045E;
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     /* margin: 30px; */
 }
 
@@ -632,7 +632,10 @@ body {
     #prize-1,
     #prize-2,
     #prize-3{
-        padding: 30px;
+        display: flex;
+    }
+    #prize-1{
+        justify-content: flex-start;
     }
     #session_head{
         font-size: 55px;
