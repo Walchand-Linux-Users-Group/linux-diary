@@ -1,9 +1,10 @@
 var referral = "";
+var email = "";
                         document.getElementById("button_text").onclick = function(e) {
 
                           var name = document.getElementById('firstName').value;
                           referral = document.getElementById('referral').value;
-                          var email = document.getElementById('email').value;
+                          email = document.getElementById('email').value;
                           var college = document.getElementById('collegeName').value;
                           var transaction = document.getElementById('transactionId').value;
 
@@ -88,7 +89,8 @@ var referral = "";
       if(referral != undefined && referral != "") {
           var url2 = "https://wluglinuxdiary.herokuapp.com/api/payment/incrementReferral"
         var params2 = {
-            referralCode: referral
+            referralCode: referral,
+            email: email
         };
         var xmlHttp2 = new XMLHttpRequest();
         var flag = true;
@@ -109,8 +111,6 @@ var referral = "";
       count++;
 
         const name = document.getElementById("firstName").value;
-
-        const email = document.getElementById("email").value;
 
         const college = document.getElementById("collegeName").value;
 
