@@ -632,10 +632,7 @@ body {
     #prize-1,
     #prize-2,
     #prize-3{
-        display: flex;
-    }
-    #prize-1{
-        justify-content: flex-start;
+        padding: 30px;
     }
     #session_head{
         font-size: 55px;
