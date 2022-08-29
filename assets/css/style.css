@@ -70,7 +70,7 @@ body {
     font-family: 'Rubik', sans-serif;
 }
 
-.wrapper .container .btn-register {
+/* .wrapper .container .btn-register {
     margin-top: 2rem;
     margin-bottom: 3rem;
     padding: 0.8rem 1.8rem;
@@ -89,7 +89,7 @@ body {
     color:  #03045E;
     border: 3px solid #03045E;
     opacity: 1;
-}
+} */
 
 .wrapper .container .registration-closed{
     padding: 20px;
@@ -625,7 +625,10 @@ body {
         padding: 0 2rem;
         font-size: 17px;
     }
-
+    .wrapper .container .registration-closed{
+        text-align: center;
+        font-size: 1.2rem;
+    }
     .wrapper .container .heading-main {
         font-size: 12vw;
     }
