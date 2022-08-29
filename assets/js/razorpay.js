@@ -1,25 +1,5 @@
 document.getElementById("button_text").onclick = function (e) {
-    var url = "https://api.linux-diary.wcewlug.org/api/payment/order"
-    var params = {
-        amount: 100,
-        currency: "INR",
-        receipt: "linuxDiary3.0",
-        payment_capture: '1'
-    };
-
-    var xmlHttp = new XMLHttpRequest();
-
-    xmlHttp.onreadystatechange = function (res) {
-        if (xmlHttp.readyState === 4) {
-            res = JSON.parse(xmlHttp.responseText);
-            document.getElementById("rzp-text").value = res.sub.id;
-            alert(res.sub.id);
-            rzpClick(e);
-        }
-    }
-    xmlHttp.open("POST", url, true);
-    xmlHttp.setRequestHeader("Content-type", "application/json");
-    xmlHttp.send(JSON.stringify(params));
+    alert("Registration is Closed !!!");
 }
 
 function rzpClick(e) {
