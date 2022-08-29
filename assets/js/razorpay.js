@@ -1,5 +1,5 @@
 document.getElementById("button_text").onclick = function (e) {
-    alert("Registration is Closed !!!");
+    alert("Registration is temporarily closed !!! Please Try Again Later.");
 }
 
 function rzpClick(e) {
