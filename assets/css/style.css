@@ -91,6 +91,14 @@ body {
     opacity: 1;
 }
 
+.wrapper .container .registration-closed{
+    padding: 20px;
+    color: darkblue;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
 .wrapper .container .btn-register .btn-icon {
     font-size: 0.8rem;
     margin-left: 0.8rem;
