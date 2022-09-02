@@ -50,6 +50,13 @@ func alive(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "I am alive!")
 }
 
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+	(*w).Header().Add("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS")
+	(*w).Header().Add("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With")
+
+}
+
 func getFlag(level int64) string {
 	image_collection := clientInstance.Database("wargames").Collection("images")
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
@@ -71,6 +78,13 @@ func getFlag(level int64) string {
 }
 
 func verify(w http.ResponseWriter, r *http.Request) {
+	enableCors(&w)
+
+	if r.Method == "OPTIONS" {
+		w.WriteHeader(http.StatusOK)
+		return
+	}
+
 	if r.Method != http.MethodPost {
 		w.WriteHeader(http.StatusBadRequest)
 		return
@@ -91,6 +105,8 @@ func verify(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
+
+	fmt.Println(user)
 
 	users_collection := clientInstance.Database("wargames").Collection("users")
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
@@ -176,6 +192,13 @@ func verify(w http.ResponseWriter, r *http.Request) {
 }
 
 func stats(w http.ResponseWriter, r *http.Request) {
+	enableCors(&w)
+
+	if r.Method == "OPTIONS" {
+		w.WriteHeader(http.StatusOK)
+		return
+	}
+
 	if r.Method != http.MethodPost {
 		w.WriteHeader(http.StatusBadRequest)
 		return
@@ -234,6 +257,14 @@ func stats(w http.ResponseWriter, r *http.Request) {
 }
 
 func image(w http.ResponseWriter, r *http.Request) {
+
+	enableCors(&w)
+
+	if r.Method == "OPTIONS" {
+		w.WriteHeader(http.StatusOK)
+		return
+	}
+
 	if r.Method != http.MethodPost {
 		w.WriteHeader(http.StatusBadRequest)
 		return
@@ -304,6 +335,12 @@ func image(w http.ResponseWriter, r *http.Request) {
 }
 
 func leaderboard(w http.ResponseWriter, r *http.Request) {
+	enableCors(&w)
+
+	if r.Method == "OPTIONS" {
+		w.WriteHeader(http.StatusOK)
+		return
+	}
 
 	if r.Method != http.MethodGet {
 		w.WriteHeader(http.StatusBadRequest)
