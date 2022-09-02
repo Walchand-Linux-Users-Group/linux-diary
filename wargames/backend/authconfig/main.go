@@ -32,12 +32,11 @@ func getImage(username string) string {
 
 	postBody, _ := json.Marshal(map[string]string{
 		"username": username,
-		"apiToken": getEnv("API_TOKEN"),
 	})
 
 	responseBody := bytes.NewBuffer(postBody)
 
-	resp, err := goHttp.Post(getEnv("API_URI")+"/stats", "application/json", responseBody)
+	resp, err := goHttp.Post(getEnv("API_URI")+"/image", "application/json", responseBody)
 
 	if err != nil {
 		log.Fatalln("An Error Occured %v", err)
@@ -50,36 +49,26 @@ func getImage(username string) string {
 		log.Fatalln(err)
 	}
 
-	type Response struct {
-		Username string `json:"username"`
-		Level    int    `json:"level"`
-		Status   string `json:"status"`
+	type Image struct {
+		Level            int64  `json:"level"`
+		ImageName        string `json:"imageName"`
+		ImageRegistryURL string `json:"imageRegistryURL"`
+		ImageDesc        string `json:"imageDesc"`
+		Flag             string `json:"flag"`
+		Status           string `json:"status"`
 	}
 
-	var response Response
-	json.Unmarshal(body, &response)
+	var img Image
 
-	postBody, _ = json.Marshal(map[string]string{
-		"level":    string(response.Level),
-		"apiToken": getEnv("API_TOKEN"),
-	})
+	json.Unmarshal(body, &img)
 
-	responseBody = bytes.NewBuffer(postBody)
-
-	resp, err = goHttp.Post(getEnv("API_URI")+"/image", "application/json", responseBody)
-
-	if err != nil {
-		log.Fatalln("An Error Occured %v", err)
-	}
-
-	return getImage(response.Level)
+	return img.ImageRegistryURL
 }
 
 func verifyUser(username string) bool {
 
 	postBody, _ := json.Marshal(map[string]string{
 		"username": username,
-		"apiToken": getEnv("API_TOKEN"),
 	})
 
 	fmt.Println(string(postBody))
@@ -99,17 +88,24 @@ func verifyUser(username string) bool {
 		log.Fatalln(err)
 	}
 
-	type Response struct {
-		Username string `json:"username"`
-		Level    int64  `json:"level"`
-		Status   string `json:"status"`
+	type Stat struct {
+		Timestamp int64 `json:"timestamp"`
+		Level     int64 `json:"level"`
 	}
 
-	var response Response
+	type User struct {
+		Username  string `json:"username"`
+		Name      string `json:"name"`
+		Level     int64  `json:"level"`
+		Org       string `json:"org"`
+		Timestamp int64  `json:"timestamp"`
+		Stats     []Stat `json:"stats"`
+		Status    string `json:"status"`
+	}
+
+	var response User
 	fmt.Println(string(body))
 	json.Unmarshal(body, &response)
-
-	fmt.Println(response)
 
 	return response.Status == "success"
 }
@@ -149,7 +145,7 @@ func (c *configHandler) OnConfig(request config.Request) (config.AppConfig, erro
 
 	cfg.Docker.Execution.Launch.ContainerConfig = &container.Config{}
 	cfg.Docker.Execution.Launch.ContainerConfig.Image = getImage(request.Username)
-	cfg.Docker.Execution.ImagePullPolicy = "Never"
+	cfg.Docker.Execution.ImagePullPolicy = "IfNotPresent"
 	cfg.Docker.Execution.DisableAgent = true
 	cfg.Docker.Execution.Mode = config.DockerExecutionModeSession
 	cfg.Docker.Execution.ShellCommand = []string{"/bin/sh"}
