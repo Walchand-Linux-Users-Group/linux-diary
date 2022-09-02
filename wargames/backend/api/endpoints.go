@@ -8,7 +8,6 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
-	"regexp"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -21,10 +20,9 @@ func initAPI() {
 	router := mux.NewRouter().StrictSlash(true)
 
 	router.HandleFunc("/", alive)
-	router.HandleFunc("/auth", auth)
-	router.HandleFunc("/register", register)
+	router.HandleFunc("/verify", verify)
 	router.HandleFunc("/leaderboard", leaderboard)
-	router.HandleFunc("/status", status)
+	router.HandleFunc("/stats", stats)
 
 	log.Fatal(http.ListenAndServe(":"+getEnv("PORT"), router))
 }
@@ -51,90 +49,27 @@ func alive(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "I am alive!")
 }
 
-func register(w http.ResponseWriter, r *http.Request) {
-
-	if r.Method != http.MethodPost {
-		w.WriteHeader(http.StatusBadRequest)
-		return
-	}
-
-	reqBody, _ := ioutil.ReadAll(r.Body)
-
-	type body struct {
-		Username string `json:"username"`
-		Password string `json:"password"`
-		Name     string `json:"name"`
-		ApiToken string `json:"apiToken"`
-	}
-
-	user := body{}
-
-	err := json.Unmarshal(reqBody, &user)
-
-	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		return
-	}
-
-	if user.ApiToken != getEnv("API_TOKEN") {
-		w.WriteHeader(http.StatusBadRequest)
-		return
-	}
-
-	match, err := regexp.MatchString("[A-Za-z0-9]", user.Username)
-
-	if !match || len(user.Username) > 10 || err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		return
-	}
-
-	passMatch, err := regexp.MatchString("[a-zA-Z0-9]", user.Password)
-
-	if !passMatch || err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		return
-	}
-
+func getFlag(level int64) string {
+	image_collection := clientInstance.Database("wargames").Collection("images")
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 
-	users_collection := clientInstance.Database("wargames").Collection("users")
-
-	var dublicate body
-	users_collection.FindOne(ctx, bson.M{
-		"username": user.Username,
-	}).Decode(&dublicate)
-
-	if (dublicate != body{}) {
-		w.WriteHeader(http.StatusBadRequest)
-		return
+	type Image struct {
+		Level       int64  `json:"level"`
+		Name        string `json:"imageName"`
+		RegistryURL string `json:"imageRegistryURL"`
+		Description string `json:"imageDesc"`
+		Flag        string `json:"flag"`
 	}
 
-	_, err = users_collection.InsertOne(ctx, bson.M{
-		"username":     user.Username,
-		"password":     user.Password,
-		"name":         user.Name,
-		"level":        0,
-		"timestamp":    makeTimestamp(),
-		"nextPassword": "WLUG{" + randomString(8) + "}",
-	})
+	var img Image
+	image_collection.FindOne(ctx, bson.M{
+		"level": level,
+	}).Decode(&img)
 
-	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		return
-	}
-
-	type Payload struct {
-		Status string
-	}
-
-	var p Payload
-	p.Status = "Success"
-
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(p)
+	return img.Flag
 }
 
-func auth(w http.ResponseWriter, r *http.Request) {
+func verify(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		w.WriteHeader(http.StatusBadRequest)
 		return
@@ -144,7 +79,7 @@ func auth(w http.ResponseWriter, r *http.Request) {
 
 	type body struct {
 		Username string `json:"username"`
-		Password string `json:"password"`
+		Flag     string `json:"flag"`
 		ApiToken string `json:"apiToken"`
 	}
 
@@ -156,8 +91,6 @@ func auth(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-
-	fmt.Println(user)
 
 	if user.ApiToken != getEnv("API_TOKEN") {
 		w.WriteHeader(http.StatusBadRequest)
@@ -169,10 +102,11 @@ func auth(w http.ResponseWriter, r *http.Request) {
 
 	type User struct {
 		Username     string `json:"username"`
-		Password     string `json:"password"`
+		Name         string `json:"name"`
+		Organisation string `json:"org"`
 		Level        int64  `json:"level"`
 		Timestamp    int64  `json:"timestamp"`
-		NextPassword string `json:"nextPassword"`
+		Internal     bool   `json:"internal"`
 	}
 
 	var dublicate User
@@ -180,46 +114,59 @@ func auth(w http.ResponseWriter, r *http.Request) {
 		"username": user.Username,
 	}).Decode(&dublicate)
 
+	if (dublicate == User{}) {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
 	type Payload struct {
-		Username     string `json:"username"`
-		Won          bool   `json:"won"`
-		Level        int64  `json:"level"`
-		Status       string `json:"status"`
-		NextPassword string `json:"nextPassword"`
+		Username string `json:"username"`
+		Won      bool   `json:"won"`
+		Level    int64  `json:"level"`
+		Status   string `json:"status"`
+	}
+
+	type Stat struct {
+		Level     int64 `json:"level"`
+		Timestamp int64 `json:"timestamp"`
 	}
 
 	var p Payload
 
 	p.Username = user.Username
 
-	if user.Password == dublicate.Password {
-		p.Level = dublicate.Level
-		p.Won = false
-		p.Status = "success"
-		p.NextPassword = dublicate.NextPassword
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(p)
-		return
-	} else if user.Password == dublicate.NextPassword {
+	if user.Flag == getFlag(dublicate.Level) {
 
-		_, err := users_collection.UpdateOne(ctx, bson.M{"username": user.Username}, bson.M{
-			"$set": bson.M{
-				"level":        dublicate.Level + 1,
-				"password":     dublicate.NextPassword,
-				"timestamp":    makeTimestamp(),
-				"nextPassword": "WLUG{" + randomString(8) + "}",
-			},
-		})
+		if dublicate.Level != 8 {
+			_, err := users_collection.UpdateOne(ctx, bson.M{"username": user.Username}, bson.M{
+				"$set": bson.M{
+					"level":     dublicate.Level + 1,
+					"timestamp": makeTimestamp(),
+				},
+				"$push": bson.M{
+					"stats": Stat{
+						Level:     dublicate.Level,
+						Timestamp: makeTimestamp(),
+					},
+				},
+			})
 
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
+			if err != nil {
+				w.WriteHeader(http.StatusInternalServerError)
+				return
+			}
 		}
 
 		p.Level = dublicate.Level + 1
 		p.Won = true
 		p.Status = "success"
-		p.NextPassword = dublicate.NextPassword
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(p)
+		return
+	} else {
+		p.Level = dublicate.Level
+		p.Won = false
+		p.Status = "fail"
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(p)
 		return
@@ -228,7 +175,7 @@ func auth(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusBadRequest)
 }
 
-func status(w http.ResponseWriter, r *http.Request) {
+func stats(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		w.WriteHeader(http.StatusBadRequest)
 		return
@@ -260,12 +207,19 @@ func status(w http.ResponseWriter, r *http.Request) {
 	users_collection := clientInstance.Database("wargames").Collection("users")
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 
+	type Stat struct {
+		Timestamp int64 `json:"timestamp"`
+		Level     int64 `json:"level"`
+	}
+
 	type User struct {
-		Username     string `json:"username"`
-		Password     string `json:"password"`
-		Level        int64  `json:"level"`
-		Timestamp    int64  `json:"timestamp"`
-		NextPassword string `json:"nextPassword"`
+		Username  string `json:"username"`
+		Name      string `json:"name"`
+		Level     int64  `json:"level"`
+		Org       string `json:"org"`
+		Timestamp int64  `json:"timestamp"`
+		Stats     []Stat `json:"stats"`
+		Status    string `json:"status"`
 	}
 
 	var dublicate User
@@ -273,24 +227,15 @@ func status(w http.ResponseWriter, r *http.Request) {
 		"username": user.Username,
 	}).Decode(&dublicate)
 
-	type Payload struct {
-		Username     string `json:"username"`
-		Won          bool   `json:"won"`
-		Level        int64  `json:"level"`
-		Status       string `json:"status"`
-		NextPassword string `json:"nextPassword"`
+	if dublicate.Username == "" {
+		w.WriteHeader(http.StatusBadRequest)
+		return
 	}
 
-	var p Payload
+	dublicate.Status = "success"
 
-	p.Username = user.Username
-
-	p.Level = dublicate.Level
-	p.Won = false
-	p.Status = "success"
-	p.NextPassword = dublicate.NextPassword
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(p)
+	json.NewEncoder(w).Encode(dublicate)
 
 }
 
@@ -306,9 +251,11 @@ func leaderboard(w http.ResponseWriter, r *http.Request) {
 
 	findOptions := options.Find()
 
-	findOptions.SetSort(bson.D{{"level", -1}, {"timeStamp", 1}})
+	findOptions.SetSort(bson.D{{"level", -1}, {"timeStamp", 1}, {"username", 1}})
 
-	cursor, err := users_collection.Find(ctx, bson.D{}, findOptions)
+	findOptions.SetLimit(10)
+
+	cursor, err := users_collection.Find(ctx, bson.M{"internal": false}, findOptions)
 
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -316,10 +263,11 @@ func leaderboard(w http.ResponseWriter, r *http.Request) {
 	}
 
 	type User struct {
-		Username string `json:"username"`
-		Name     string `json:"name"`
-		Level    int64  `json:"level"`
-		Rank     int    `json:"rank"`
+		Username  string `json:"username"`
+		Name      string `json:"name"`
+		Level     int64  `json:"level"`
+		Rank      int    `json:"rank"`
+		Timestamp int64  `json:"timestamp"`
 	}
 
 	var results []User
