@@ -23,6 +23,7 @@ func initAPI() {
 	router.HandleFunc("/verify", verify)
 	router.HandleFunc("/leaderboard", leaderboard)
 	router.HandleFunc("/stats", stats)
+	router.HandleFunc("/image", image)
 
 	log.Fatal(http.ListenAndServe(":"+getEnv("PORT"), router))
 }
@@ -54,11 +55,11 @@ func getFlag(level int64) string {
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 
 	type Image struct {
-		Level       int64  `json:"level"`
-		Name        string `json:"imageName"`
-		RegistryURL string `json:"imageRegistryURL"`
-		Description string `json:"imageDesc"`
-		Flag        string `json:"flag"`
+		Level            int64  `json:"level"`
+		ImageNameName    string `json:"imageName"`
+		ImageRegistryURL string `json:"imageRegistryURL"`
+		ImageDesc        string `json:"imageDesc"`
+		Flag             string `json:"flag"`
 	}
 
 	var img Image
@@ -80,7 +81,6 @@ func verify(w http.ResponseWriter, r *http.Request) {
 	type body struct {
 		Username string `json:"username"`
 		Flag     string `json:"flag"`
-		ApiToken string `json:"apiToken"`
 	}
 
 	user := body{}
@@ -88,11 +88,6 @@ func verify(w http.ResponseWriter, r *http.Request) {
 	err := json.Unmarshal(reqBody, &user)
 
 	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		return
-	}
-
-	if user.ApiToken != getEnv("API_TOKEN") {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
@@ -185,7 +180,6 @@ func stats(w http.ResponseWriter, r *http.Request) {
 
 	type body struct {
 		Username string `json:"username"`
-		ApiToken string `json:"apiToken"`
 	}
 
 	user := body{}
@@ -193,13 +187,6 @@ func stats(w http.ResponseWriter, r *http.Request) {
 	err := json.Unmarshal(reqBody, &user)
 
 	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		return
-	}
-
-	fmt.Println(user)
-
-	if user.ApiToken != getEnv("API_TOKEN") {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
@@ -236,6 +223,74 @@ func stats(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(dublicate)
+
+}
+
+func image(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	reqBody, _ := ioutil.ReadAll(r.Body)
+
+	type body struct {
+		Username string `json:"username"`
+		ApiToken string `json:"apiToken"`
+	}
+
+	user := body{}
+
+	err := json.Unmarshal(reqBody, &user)
+
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	if user.ApiToken != getEnv("API_TOKEN") {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	users_collection := clientInstance.Database("wargames").Collection("users")
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+
+	type User struct {
+		Username  string `json:"username"`
+		Name      string `json:"name"`
+		Org       string `json:"org"`
+		Level     int64  `json:"level"`
+		Timestamp int64  `json:"timestamp"`
+		Internal  bool   `json:"internal"`
+	}
+
+	var dublicate User
+	users_collection.FindOne(ctx, bson.M{
+		"username": user.Username,
+	}).Decode(&dublicate)
+
+	image_collection := clientInstance.Database("wargames").Collection("images")
+	ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
+
+	type Image struct {
+		Level            int64  `json:"level"`
+		ImageName        string `json:"imageName"`
+		ImageRegistryURL string `json:"imageRegistryURL"`
+		ImageDesc        string `json:"imageDesc"`
+		Flag             string `json:"flag"`
+		Status           string `json:"status"`
+	}
+
+	var img Image
+	image_collection.FindOne(ctx, bson.M{
+		"level": dublicate.Level,
+	}).Decode(&img)
+
+	img.Status = "success"
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(img)
 
 }
 
