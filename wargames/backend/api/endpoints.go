@@ -25,7 +25,7 @@ func initAPI() {
 	router.HandleFunc("/stats", stats)
 	router.HandleFunc("/image", image)
 
-	log.Fatal(http.ListenAndServe(":"+getEnv("PORT"), router))
+	log.Fatal(http.ListenAndServeTLS(":"+getEnv("PORT"), "full-cert.crt", "private-key.key", router))
 }
 
 var pool = "abcdefghijklmnopqrstuvwxyzABCEFGHIJKLMNOPQRSTUVWXYZ1234567890"
