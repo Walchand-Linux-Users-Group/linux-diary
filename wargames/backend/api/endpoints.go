@@ -132,6 +132,8 @@ func verify(w http.ResponseWriter, r *http.Request) {
 
 	if user.Flag == getFlag(dublicate.Level) {
 
+		fmt.Println("Verification successful for username ", user.Username)
+
 		if dublicate.Level != 8 {
 			_, err := users_collection.UpdateOne(ctx, bson.M{"username": user.Username}, bson.M{
 				"$set": bson.M{
@@ -159,6 +161,9 @@ func verify(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(p)
 		return
 	} else {
+
+		fmt.Println("Verification unsuccessful for username ", user.Username)
+
 		p.Level = dublicate.Level
 		p.Won = false
 		p.Status = "fail"
@@ -190,6 +195,8 @@ func stats(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
+
+	fmt.Println("Received Statistics Request for username ", user.Username)
 
 	users_collection := clientInstance.Database("wargames").Collection("users")
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
@@ -252,6 +259,8 @@ func image(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
+
+	fmt.Println("Received Image Request for username ", user.Username)
 
 	users_collection := clientInstance.Database("wargames").Collection("users")
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)

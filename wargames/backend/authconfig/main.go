@@ -32,6 +32,7 @@ func getImage(username string) string {
 
 	postBody, _ := json.Marshal(map[string]string{
 		"username": username,
+		"apiToken": getEnv("API_TOKEN"),
 	})
 
 	responseBody := bytes.NewBuffer(postBody)
@@ -39,14 +40,16 @@ func getImage(username string) string {
 	resp, err := goHttp.Post(getEnv("API_URI")+"/image", "application/json", responseBody)
 
 	if err != nil {
-		log.Fatalln("An Error Occured %v", err)
+		fmt.Println("Wargames API seems down!")
+		return ""
 	}
 
 	defer resp.Body.Close()
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		log.Fatalln(err)
+		fmt.Println("Error in Verifying User or API compatibility issue!")
+		return ""
 	}
 
 	type Image struct {
@@ -59,7 +62,6 @@ func getImage(username string) string {
 	}
 
 	var img Image
-
 	json.Unmarshal(body, &img)
 
 	return img.ImageRegistryURL
@@ -78,14 +80,17 @@ func verifyUser(username string) bool {
 	resp, err := goHttp.Post(getEnv("API_URI")+"/stats", "application/json", responseBody)
 
 	if err != nil {
-		log.Fatalf("An Error Occured %v", err)
+		fmt.Println("Wargames API seems down!")
+		return false
 	}
 
 	defer resp.Body.Close()
 
 	body, err := ioutil.ReadAll(resp.Body)
+
 	if err != nil {
-		log.Fatalln(err)
+		fmt.Println("Error in Verifying User or API compatibility issue!")
+		return false
 	}
 
 	type Stat struct {
@@ -104,7 +109,6 @@ func verifyUser(username string) bool {
 	}
 
 	var response User
-	fmt.Println(string(body))
 	json.Unmarshal(body, &response)
 
 	return response.Status == "success"
@@ -132,6 +136,7 @@ func (a *authHandler) OnPassword(metadata metadata.ConnectionAuthPendingMetadata
 	error,
 ) {
 	if verifyUser(metadata.Username) {
+		fmt.Println("SSH successful for username ", metadata.Username)
 		return true, metadata.Authenticated(metadata.Username), nil
 	}
 	return false, metadata.AuthFailed(), nil
