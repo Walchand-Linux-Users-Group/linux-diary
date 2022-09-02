@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "cd .. && husky install frontend/.husky"
+    "prepare": "cd .."
   },
   "dependencies": {
     "axios": "^0.27.2",
