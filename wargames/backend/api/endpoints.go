@@ -53,7 +53,7 @@ func alive(w http.ResponseWriter, r *http.Request) {
 func enableCors(w *http.ResponseWriter) {
 	(*w).Header().Set("Access-Control-Allow-Origin", "*")
 	(*w).Header().Add("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS")
-	(*w).Header().Add("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With")
+	(*w).Header().Add("Access-Control-Allow-Headers", "*")
 
 }
 
