@@ -644,11 +644,9 @@ body {
         font-size: 1.2rem;
     }
 
-    .form #left-side_form #successBox{
+    .form #left-side_form #successBox #first-insight{
         margin: 0;
         padding: 0;
-        display: flex;
-        align-content: center;
     }
 
     .form #left-side_form #successBox #left-side_form-head{
