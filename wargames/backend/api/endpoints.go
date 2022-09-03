@@ -353,7 +353,7 @@ func leaderboard(w http.ResponseWriter, r *http.Request) {
 
 	findOptions := options.Find()
 
-	findOptions.SetSort(bson.D{{"level", -1}, {"timeStamp", 1}, {"username", 1}})
+	findOptions.SetSort(bson.D{{"level", -1}, {"timeStamp", 1}})
 
 	findOptions.SetLimit(10)
 
