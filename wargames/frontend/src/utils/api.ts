@@ -4,7 +4,7 @@ import config from '../../config.json';
 export const getLeaderboard = async () => {
   const data = await axios({
     method: 'get',
-    url: "http://wargames.wcewlug.org:8888/leaderboard",
+    url: "https://wargames.wcewlug.org:8888/leaderboard",
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',},
@@ -16,7 +16,7 @@ export const getLeaderboard = async () => {
 export const getStats = async (username) => {
   const data = await axios({
     method: 'post',
-    url: "http://wargames.wcewlug.org:8888/stats",
+    url: "https://wargames.wcewlug.org:8888/stats",
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export const submitFlag = async (username, flag) => {
 
   const data = await axios({
     method: 'post',
-    url: "http://wargames.wcewlug.org:8888/verify",
+    url: "https://wargames.wcewlug.org:8888/verify",
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
