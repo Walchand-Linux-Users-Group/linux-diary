@@ -28,8 +28,6 @@ body {
     margin-bottom: 1rem ;
     width: 92vw;
     display: flex;
-    /* justify-content: center; */
-    /* justify-content:space-around; */
     align-items: center;
 }
 
@@ -70,7 +68,7 @@ body {
     font-family: 'Rubik', sans-serif;
 }
 
-/* .wrapper .container .btn-register {
+.wrapper .container .btn-register {
     margin-top: 2rem;
     margin-bottom: 3rem;
     padding: 0.8rem 1.8rem;
@@ -89,14 +87,6 @@ body {
     color:  #03045E;
     border: 3px solid #03045E;
     opacity: 1;
-} */
-
-.wrapper .container .registration-closed{
-    padding: 20px;
-    color: darkblue;
-    font-size: 1.5rem;
-    font-weight: 500;
-    text-decoration: underline;
 }
 
 .wrapper .container .btn-register .btn-icon {
@@ -296,6 +286,30 @@ body {
     font-size: 30px;
     font-family:'Montserrat';
     color: #CAF0F8;
+    text-align: center;
+}
+
+#first-insight{
+    padding: 5px;
+    border: #0077B6 3px solid;
+    border-radius: 30px;
+}
+
+.form #left-side_form #left-side_form-head{
+    font-size: 42px;
+    font-weight: 600;
+}
+
+#participants-text{
+    color: white;
+    padding: 30px;
+    font-size: 38px;
+    text-align: center;
+}
+
+#participants-logo{
+    color: white;
+    font-size: 80px;
 }
 
 .form h1{
@@ -629,6 +643,22 @@ body {
         text-align: center;
         font-size: 1.2rem;
     }
+
+    .form #left-side_form #successBox{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-content: center;
+    }
+
+    .form #left-side_form #successBox #left-side_form-head{
+        font-size: 30px;
+    }
+
+    .form #left-side_form #successBox #first-insight #participants-text{
+        font-size: 25px;
+    }
+    
     .wrapper .container .heading-main {
         font-size: 12vw;
     }
