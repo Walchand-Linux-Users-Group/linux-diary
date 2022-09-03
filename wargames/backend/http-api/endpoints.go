@@ -353,7 +353,7 @@ func leaderboard(w http.ResponseWriter, r *http.Request) {
 
 	findOptions := options.Find()
 
-	findOptions.SetSort(bson.D{{"level", -1}, {"timeStamp", 1}})
+	findOptions.SetSort(bson.D{{"level", -1}, {"timestamp", 1}})
 
 	findOptions.SetLimit(10)
 
@@ -372,7 +372,16 @@ func leaderboard(w http.ResponseWriter, r *http.Request) {
 		Timestamp int64  `json:"timestamp"`
 	}
 
+	type Payload struct {
+		Username  string    `json:"username"`
+		Name      string    `json:"name"`
+		Level     int64     `json:"level"`
+		Rank      int       `json:"rank"`
+		Timestamp time.Time `json:"timestamp"`
+	}
+
 	var results []User
+	var mod []Payload
 
 	if err = cursor.All(context.TODO(), &results); err != nil {
 		panic(err)
@@ -380,8 +389,15 @@ func leaderboard(w http.ResponseWriter, r *http.Request) {
 
 	for i := range results {
 		results[i].Rank = i + 1
+		var user Payload
+		user.Username = results[i].Username
+		user.Name = results[i].Name
+		user.Level = results[i].Level
+		user.Rank = results[i].Rank
+		user.Timestamp = time.Unix(0, results[i].Timestamp*int64(time.Millisecond))
+		mod = append(mod, user)
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(results)
+	json.NewEncoder(w).Encode(mod)
 }
