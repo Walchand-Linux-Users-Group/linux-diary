@@ -80,7 +80,7 @@ func verifyUser(username string) bool {
 	resp, err := goHttp.Post(getEnv("API_URI")+"/stats", "application/json", responseBody)
 
 	if err != nil {
-		fmt.Println("Wargames API seems down!")
+		fmt.Println("Wargames API seems down! - Verifying User")
 		return false
 	}
 
