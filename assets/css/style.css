@@ -94,6 +94,12 @@ body {
     margin-left: 0.8rem;
 }
 
+#group-photo{
+    width: 950px;
+    height: 700px;
+    margin-bottom: 60px;
+}
+
 .wrapper .container .video-wrapper {
     width: 80%;
     display: flex;
@@ -595,6 +601,10 @@ body {
 }
 
 @media (max-width:768px) {
+    #group-photo{
+        width: 600px;
+        height: 350px;
+    }
     #telegram_img,
     #eye_img,
     #reload_img,
@@ -639,9 +649,9 @@ body {
         padding: 0 2rem;
         font-size: 17px;
     }
-    .wrapper .container .registration-closed{
-        text-align: center;
-        font-size: 1.2rem;
+    #group-photo{
+        width: 400px;
+        height: 250px;
     }
 
     .form #left-side_form #successBox #first-insight{
