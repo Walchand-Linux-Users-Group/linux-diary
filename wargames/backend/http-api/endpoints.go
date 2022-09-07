@@ -151,7 +151,7 @@ func verify(w http.ResponseWriter, r *http.Request) {
 
 		fmt.Println("Verification successful for username ", user.Username)
 
-		if dublicate.Level != 8 {
+		if dublicate.Level != 12 {
 			_, err := users_collection.UpdateOne(ctx, bson.M{"username": user.Username}, bson.M{
 				"$set": bson.M{
 					"level":     dublicate.Level + 1,
